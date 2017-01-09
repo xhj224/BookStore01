@@ -1,0 +1,38 @@
+<ehcache>
+
+    <!-- 如果设置了overflowToDisk=true的话
+                     当缓存不够用的时候,到达上限的时候,允许
+                     对象缓存到磁盘中
+     -->
+    <diskStore path="C:/ehcache"/>
+
+    <!--
+        maxInMemory       - 内存中允许存放的最大对象数量
+        
+        eternal           - 对象在二级缓存中是否永久保存
+                           
+        timeToIdleSeconds - 对象空闲时间(秒).当前时间->对象最后一次访问时间
+        
+        timeToLiveSeconds - 对象存活时间(秒).当前时间-创建对象的时间
+        
+        overflowToDisk    - 是否允许把溢出的部分对象写入到磁盘中.
+
+        -->
+    <!-- 二级缓存的默认的策略 -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="true"
+    />
+
+    <!-- 自定义的二级缓存的缓存策略 -->
+    <cache name="myCache"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           overflowToDisk="true"
+    />
+</ehcache>
